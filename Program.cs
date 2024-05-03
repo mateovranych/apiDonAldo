@@ -1,8 +1,10 @@
 using ApiDonAldo.Context;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ApiDonAldo.Helpers;
+using ApiDonAldo.Repo;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,37 +12,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //Hago una cadena de conexión que va a servir para enlazarse con el appsettings.json.
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+string connectionString = builder.Configuration.GetConnectionString("defaultConnetcion");
 //Hago una variable llamada ServerVersion.
 var ServerVersion = new MySqlServerVersion(new Version(8,0,33));
 //Realizo la conexión.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion));
+//Añado el automapper
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-
-
+builder.Services.AddScoped<IClienteRepo, ClienteRepo>(); //Sirve para no usar el context directamente.
 
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 
-
-
 //Configuración del jwt
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-{
-	options.TokenValidationParameters = new TokenValidationParameters
-	{
-		ValidateIssuer = true,
-		ValidateAudience = true,
-		ValidateLifetime = true,
-		ValidateIssuerSigningKey = true,
-		ValidIssuer = builder.Configuration["Jwt:Issuer"],
-		ValidAudience = builder.Configuration["Jwt:Audience"],
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
 
-	};
-});
 
 
 
