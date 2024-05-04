@@ -2,7 +2,7 @@
 
 namespace ApiDonAldo.Models.Entities
 {
-    public class Cliente
+    public class Cliente 
     {
         [Key]
         public int id { get; set; }

@@ -1,7 +1,10 @@
 using ApiDonAldo.Context;
 using ApiDonAldo.Helpers;
+using ApiDonAldo.Models;
+using ApiDonAldo.Models.Entities;
 using ApiDonAldo.Repo;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -17,12 +20,17 @@ string connectionString = builder.Configuration.GetConnectionString("defaultConn
 var ServerVersion = new MySqlServerVersion(new Version(8,0,33));
 //Realizo la conexión.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion));
+//Añado identity para usar las tablas de asp.net.
+
+builder.Services.AddIdentity<Users, IdentityRole>(x => x.Password.RequireNonAlphanumeric = false)
+.AddEntityFrameworkStores<AppDbContext>();
+
 //Añado el automapper
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<IClienteRepo, ClienteRepo>(); //Sirve para no usar el context directamente.
+//builder.Services.AddScoped<IClienteRepo, ClienteRepo>(); //Sirve para no usar el context directamente.
 
 
 builder.Services.AddControllers();
