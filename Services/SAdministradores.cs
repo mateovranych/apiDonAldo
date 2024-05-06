@@ -44,10 +44,12 @@ namespace ApiDonAldo.Services
 			return rtaAuth;
 
 			}
-			catch (Exception)
+
+			catch (Exception ex)
 			{
 
-				throw;
+				Console.WriteLine( "Error" + ex.Message);
+				return null;
 			}
 
 		}

@@ -35,6 +35,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<SAdministradores>();
 builder.Services.AddScoped<SToken>();
+builder.Services.AddScoped<dataSeeder>();
+
 
 
 
@@ -49,6 +51,24 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+	var services = scope.ServiceProvider;
+
+	try
+	{
+		var dataSeeder = services.GetRequiredService<dataSeeder>();
+		await dataSeeder.CrearRoles();
+		await dataSeeder.CrearAdmin();
+		
+	}
+	catch (Exception ex)
+	{
+
+
+	}
+}
 
 
 // Configure the HTTP request pipeline.
@@ -65,7 +85,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Uso la autenticación.
-app.UseAuthentication();
+
 
 app.UseAuthorization();
 

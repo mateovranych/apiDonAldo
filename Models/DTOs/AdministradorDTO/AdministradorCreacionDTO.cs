@@ -15,6 +15,7 @@ namespace ApiDonAldo.Models.DTOs.AdministradorDTO
 
 		[Required]
 		public string Password { get; set; }
+
 	}
 }
 

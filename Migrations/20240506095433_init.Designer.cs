@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiDonAldo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240503124126_init")]
+    [Migration("20240506095433_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
