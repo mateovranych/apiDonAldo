@@ -3,6 +3,7 @@ using ApiDonAldo.Helpers;
 using ApiDonAldo.Models;
 using ApiDonAldo.Models.Entities;
 using ApiDonAldo.Repo;
+using ApiDonAldo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,10 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //builder.Services.AddScoped<IClienteRepo, ClienteRepo>(); //Sirve para no usar el context directamente.
+
+builder.Services.AddScoped<SAdministradores>();
+builder.Services.AddScoped<SToken>();
+
 
 
 builder.Services.AddControllers();
