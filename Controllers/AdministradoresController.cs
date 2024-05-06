@@ -32,7 +32,7 @@ namespace ApiDonAldo.Controllers
 			}
 			catch 
 			{
-				return BadRequest();
+				return StatusCode(500, "Error interno del servidor");
 			}
 			
 		}

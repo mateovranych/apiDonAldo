@@ -24,6 +24,7 @@ namespace ApiDonAldo.Models
 		[Required]
 		public bool EsAdmin { get; set; }
 
+
 		[Required]
 		[Column(TypeName = "date")]
 		public DateTime FechaCreacion { get; set; }
