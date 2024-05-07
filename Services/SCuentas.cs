@@ -21,7 +21,7 @@ namespace ApiDonAldo.Services
         {
             try
             {
-                var cliente = await context.Users.FirstOrDefaultAsync(u => u.Email == credentials.Email);
+                var cliente = await context.Users.FirstOrDefaultAsync(u => u.Email == credentials.Email && u.Activo == true);
                 if(cliente == null)
                 return false;
 
@@ -35,11 +35,8 @@ namespace ApiDonAldo.Services
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
-
-
     }
 }

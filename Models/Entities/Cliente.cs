@@ -8,16 +8,16 @@ namespace ApiDonAldo.Models.Entities
         public int id { get; set; }
 
         [Required]
-        public string nombre { get; set; }
+        public string? nombre { get; set; }
 
 		[Required]
-		public string apellido { get; set; }
+		public string? apellido { get; set; }
 		[Required]
-		public string nombreUsuario { get; set; }
+		public string? nombreUsuario { get; set; }
 		[Required]
-		public string email { get; set; }
+		public string? email { get; set; }
 		[Required]
-		public string telefono { get; set; }
+		public string? telefono { get; set; }
 		[Required]
 		public DateTime datoCreacion { get; set; }
 		[Required]

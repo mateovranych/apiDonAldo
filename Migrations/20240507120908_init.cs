@@ -38,11 +38,11 @@ namespace ApiDonAldo.Migrations
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Nombre = table.Column<string>(type: "longtext", nullable: true)
+                    Nombre = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Apellido = table.Column<string>(type: "longtext", nullable: true)
+                    Apellido = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Dni = table.Column<int>(type: "int", nullable: false),
+                    Dni = table.Column<int>(type: "int", nullable: true),
                     Telefono = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Direccion = table.Column<string>(type: "longtext", nullable: true)

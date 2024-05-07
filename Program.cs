@@ -3,8 +3,10 @@ using ApiDonAldo.Helpers;
 using ApiDonAldo.Models;
 using ApiDonAldo.Models.Entities;
 using ApiDonAldo.Repo;
+using ApiDonAldo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -21,16 +23,17 @@ var ServerVersion = new MySqlServerVersion(new Version(8,0,33));
 //Realizo la conexión.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion));
 //Añado identity para usar las tablas de asp.net.
-
 builder.Services.AddIdentity<Users, IdentityRole>(x => x.Password.RequireNonAlphanumeric = false)
 .AddEntityFrameworkStores<AppDbContext>();
-
 //Añado el automapper
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-//builder.Services.AddScoped<IClienteRepo, ClienteRepo>(); //Sirve para no usar el context directamente.
+//Inyecto los servicios
+builder.Services.AddScoped<SAdministradores>();
+builder.Services.AddScoped<SToken>();
+builder.Services.AddScoped<SCuentas>();
+builder.Services.AddScoped<dataSeeder>();
 
 
 builder.Services.AddControllers();
@@ -44,6 +47,26 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+
+
+using (var scope = app.Services.CreateScope())
+{
+	var services = scope.ServiceProvider;
+
+	try
+	{
+		var dataSeeder = services.GetRequiredService<dataSeeder>();
+		await dataSeeder.CrearRoles();
+		await dataSeeder.CrearAdmin();
+		
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine("Error desconocido: " + ex.Message);
+
+	}
+}
 
 
 // Configure the HTTP request pipeline.
@@ -60,7 +83,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Uso la autenticación.
-app.UseAuthentication();
+
 
 app.UseAuthorization();
 

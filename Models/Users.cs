@@ -13,16 +13,17 @@ namespace ApiDonAldo.Models
 		[Required]
 		public string Apellido { get; set; }
 
-		public int Dni { get; set; }
+		public int? Dni { get; set; }
 
-		public string Telefono { get; set; }
+		public string? Telefono { get; set; }
 
-		public string Direccion { get; set; }
+		public string? Direccion { get; set; }
 
 		public bool Activo { get; set; } = true;
 
 		[Required]
 		public bool EsAdmin { get; set; }
+
 
 		[Required]
 		[Column(TypeName = "date")]
