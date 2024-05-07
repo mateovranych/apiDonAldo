@@ -21,6 +21,9 @@ namespace ApiDonAldo.Models.DTOs.AdministradorDTO
 		[Required]
 		public bool EsAdmin { get; set; }
 
-	
+		[Required]
+		public bool Activo { get; set; }
+
+
 	}
 }

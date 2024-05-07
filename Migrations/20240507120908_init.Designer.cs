@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiDonAldo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240506095433_init")]
+    [Migration("20240507120908_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,7 @@ namespace ApiDonAldo.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Apellido")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -79,7 +80,7 @@ namespace ApiDonAldo.Migrations
                     b.Property<string>("Direccion")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Dni")
+                    b.Property<int?>("Dni")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -105,6 +106,7 @@ namespace ApiDonAldo.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("NormalizedEmail")

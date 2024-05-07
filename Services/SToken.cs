@@ -34,15 +34,17 @@ namespace ApiDonAldo.Services
             {
                 claims.Add(new Claim(ClaimTypes.Role, role)); //Claims.add agrega un nuevo tipo de claims en role. de tipo role 
             }
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Clavesecreta123.!"])); 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Key"]));  //Defino una variable llamada key que va a ser de tipo symetricssecuritykey, y le paso la llave del jwt
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256); 
             var expiration = DateTime.UtcNow.AddDays(diasExp);
+
             var token = new JwtSecurityToken(
                 issuer: null,
                 audience: null,
                 claims: claims,
                 signingCredentials: creds
                 );
+
             var rtaTkoen = new JwtSecurityTokenHandler().WriteToken(token);
             return new RtaAuth(token: rtaTkoen, esAdmin: usuario.EsAdmin);
 

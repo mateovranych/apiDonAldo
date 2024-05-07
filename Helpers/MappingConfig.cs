@@ -19,6 +19,8 @@ namespace ApiDonAldo.Helpers
                 //Administradores
                 config.CreateMap<Users, AdministradorDTO>().ReverseMap();
                 config.CreateMap<AdministradorCreacionDTO, Users>();
+                
+                
 
 			});
 
