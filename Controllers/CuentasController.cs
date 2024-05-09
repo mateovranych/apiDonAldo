@@ -1,4 +1,5 @@
 ﻿using ApiDonAldo.Models.Auth;
+using ApiDonAldo.Models.DTOs.ClienteDTO;
 using ApiDonAldo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -12,11 +13,13 @@ namespace ApiDonAldo.Controllers
 	{
         private readonly SCuentas sCuentas;
         private readonly SToken sToken;
+        private readonly SClientes sClientes;
 
-        public CuentasController(SCuentas sCuentas, SToken sToken)
+        public CuentasController(SCuentas sCuentas, SToken sToken, SClientes sClientes)
         {      
             this.sCuentas = sCuentas;
-            this.sToken = sToken;            
+            this.sToken = sToken;
+            this.sClientes = sClientes; 
         }
 
         [HttpPost("login")]
@@ -27,6 +30,25 @@ namespace ApiDonAldo.Controllers
             return NotFound("Credenciales inválidas");
             var generarTokenLogin = await sToken.GenerateToken(email: credentials.Email, diasExp: 1);
             return Ok(generarTokenLogin);
+        }
+
+
+        [HttpPost("registro")]
+
+        public async Task<ActionResult<RtaAuth>> RegistroCliente([FromBody] ClienteCreacionDTO clienteCreacionDTO)
+        {
+            try
+            {
+                var respuestaAutenticacion = await sClientes.CreateClientes(clienteCreacionDTO);
+
+                return respuestaAutenticacion;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

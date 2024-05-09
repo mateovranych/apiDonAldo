@@ -31,9 +31,20 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Inyecto los servicios
 builder.Services.AddScoped<SAdministradores>();
+builder.Services.AddScoped<SClientes>();
 builder.Services.AddScoped<SToken>();
 builder.Services.AddScoped<SCuentas>();
 builder.Services.AddScoped<dataSeeder>();
+//Configuración de cors
+builder.Services.AddCors(options =>
+{
+	options.AddDefaultPolicy(builder =>
+	{
+		builder.AllowAnyOrigin()
+			   .AllowAnyMethod()
+			   .AllowAnyHeader();
+	});
+});
 
 
 builder.Services.AddControllers();
@@ -78,12 +89,11 @@ if (app.Environment.IsDevelopment())
 	
 }
 
-
-
 app.UseHttpsRedirection();
 
 //Uso la autenticación.
 
+app.UseCors();
 
 app.UseAuthorization();
 

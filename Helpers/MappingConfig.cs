@@ -13,8 +13,8 @@ namespace ApiDonAldo.Helpers
             var mappingConfig = new MapperConfiguration(config =>
             {
                 //Clientes
-                config.CreateMap<ClienteDTO, Cliente>().ReverseMap();
-                config.CreateMap<Cliente, ClienteDTO>();
+                config.CreateMap<Users, ClienteDTO>().ReverseMap();
+                config.CreateMap<ClienteCreacionDTO, Users>();
 
                 //Administradores
                 config.CreateMap<Users, AdministradorDTO>().ReverseMap();
