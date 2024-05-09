@@ -1,108 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ApiDonAldo.Models;
+using ApiDonAldo.Models.DTOs.ClienteDTO;
+using ApiDonAldo.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ApiDonAldo.Context;
-using ApiDonAldo.Models.Entities;
 
 namespace ApiDonAldo.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ClientesController : ControllerBase
-    {
-        private readonly AppDbContext _context;
-
-        public ClientesController(AppDbContext context)
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ClientesController : ControllerBase
+	{
+        private readonly SToken sToken;
+        private readonly SClientes sClientes;
+        private readonly UserManager<Users> userManager;
+        public ClientesController(SClientes sClientes, SToken sToken, UserManager<Users> userManager)
         {
-            _context = context;
+            this.userManager = userManager;
+            this.sToken = sToken;
+            this.sClientes = sClientes;            
         }
 
-        // GET: api/Clientes
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        public async Task<ActionResult<List<ClienteDTO>>> GetClientes()
         {
-            return await _context.Clientes.ToListAsync();
-        }
-
-        // GET: api/Clientes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetCliente(int id)
-        {
-            var cliente = await _context.Clientes.FindAsync(id);
-
-            if (cliente == null)
-            {
-                return NotFound();
+            try{
+                var clientes = await sClientes.GetClientes();
+                return Ok(clientes);
             }
-
-            return cliente;
-        }
-
-        // PUT: api/Clientes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
-        {
-            if (id != cliente.id)
+            catch (Exception)
             {
-                return BadRequest();
+                throw;
             }
-
-            _context.Entry(cliente).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClienteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
-        // POST: api/Clientes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
-        {
-            _context.Clientes.Add(cliente);
-            await _context.SaveChangesAsync();
+        
 
-            return CreatedAtAction("GetCliente", new { id = cliente.id }, cliente);
-        }
-
-        // DELETE: api/Clientes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCliente(int id)
-        {
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
-
-            _context.Clientes.Remove(cliente);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ClienteExists(int id)
-        {
-            return _context.Clientes.Any(e => e.id == id);
-        }
+        
     }
 }
