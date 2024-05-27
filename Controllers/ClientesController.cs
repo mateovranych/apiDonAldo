@@ -35,6 +35,10 @@ namespace ApiDonAldo.Controllers
             }
         }
 
+        [HttpDelete]
+
+      
+
         
 
         
