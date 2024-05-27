@@ -66,5 +66,24 @@ namespace ApiDonAldo.Services
                 throw;
             }
         }
+
+        public async Task DeleteClient(string email)
+        {
+            try
+            {
+                var cliente = await _userManager.FindByEmailAsync(email);
+                if (cliente == null || cliente.EsAdmin) throw new Exception();
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+        }
+
     }
 }
