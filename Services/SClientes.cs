@@ -25,19 +25,6 @@ namespace ApiDonAldo.Services
             this._sToken = sToken;              
         }
 
-        public async Task<List<ClienteDTO>> GetClientes()
-        {
-            try{
-
-                var clientes = await _context.Users.Where(x => x.EsAdmin == false && x.Activo == false).ToListAsync();                
-                return mapper.Map<List<ClienteDTO>>(clientes);    
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         public async Task<RtaAuth> CreateClientes ( ClienteCreacionDTO clienteCreacionDTO)
         {
             try{
@@ -67,7 +54,21 @@ namespace ApiDonAldo.Services
             }
         }
 
-        public async Task DeleteClient(string email)
+		public async Task<List<ClienteDTO>> GetClientesActivosAsync()
+		{
+			try
+			{
+				var clientes = await _context.Users.Where(user => user.EsAdmin == false && user.Activo == true).ToListAsync();
+
+				return mapper.Map<List<ClienteDTO>>(clientes);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		public async Task DeleteClient(string email)
         {
             try
             {

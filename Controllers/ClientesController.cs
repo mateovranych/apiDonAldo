@@ -26,7 +26,7 @@ namespace ApiDonAldo.Controllers
         public async Task<ActionResult<List<ClienteDTO>>> GetClientes()
         {
             try{
-                var clientes = await sClientes.GetClientes();
+                var clientes = await sClientes.GetClientesActivosAsync();
                 return Ok(clientes);
             }
             catch (Exception)
@@ -34,13 +34,6 @@ namespace ApiDonAldo.Controllers
                 throw;
             }
         }
-
-        [HttpDelete]
-
-      
-
-        
-
         
     }
 }
