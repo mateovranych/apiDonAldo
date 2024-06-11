@@ -1,6 +1,5 @@
 ﻿using ApiDonAldo.Models;
 using ApiDonAldo.Models.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +14,8 @@ namespace ApiDonAldo.Context
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+
+        public DbSet<Producto> Productos { get; set; }
 
 	
 
