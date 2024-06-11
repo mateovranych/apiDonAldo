@@ -30,7 +30,7 @@ namespace ApiDonAldo.Services
                 new Claim("mail", email)
             };
 
-            foreach (var role in roles) //Hago un foreach para recorrer los roles y si el
+            foreach (var role in roles) //Hago un foreach para recorrer los roles 
             {
                 claims.Add(new Claim(ClaimTypes.Role, role)); //Claims.add agrega un nuevo tipo de claims en role. de tipo role 
             }
