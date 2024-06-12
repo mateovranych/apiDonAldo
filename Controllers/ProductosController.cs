@@ -18,7 +18,7 @@ namespace ApiDonAldo.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> CrearProducto([FromForm] ProductoCreacionDTO productoCreacionDTO)
+		public async Task<IActionResult> CrearProducto([FromForm]ProductoCreacionDTO productoCreacionDTO)
 		{
 			var producto = await _sproductos.CrearProductosAsync(productoCreacionDTO);
 			return Ok(producto);

@@ -1,6 +1,7 @@
 ﻿using ApiDonAldo.Models;
 using ApiDonAldo.Models.DTOs.AdministradorDTO;
 using ApiDonAldo.Models.DTOs.ClienteDTO;
+using ApiDonAldo.Models.DTOs.ProductoDTO;
 using ApiDonAldo.Models.Entities;
 using AutoMapper;
 
@@ -19,7 +20,10 @@ namespace ApiDonAldo.Helpers
                 //Administradores
                 config.CreateMap<Users, AdministradorDTO>().ReverseMap();
                 config.CreateMap<AdministradorCreacionDTO, Users>();
-                
+
+                //productos
+                config.CreateMap<Producto, ProductoCreacionDTO>().ReverseMap();
+                config.CreateMap<ProductoCreacionDTO, Producto>();
                 
 
 			});
