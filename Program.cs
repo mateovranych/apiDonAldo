@@ -33,6 +33,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<SAdministradores>();
 builder.Services.AddScoped<SClientes>();
 builder.Services.AddScoped<SToken>();
+builder.Services.AddScoped<SProductos>();
 builder.Services.AddScoped<SCuentas>();
 builder.Services.AddScoped<dataSeeder>();
 //Configuración de cors
