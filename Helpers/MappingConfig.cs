@@ -22,8 +22,8 @@ namespace ApiDonAldo.Helpers
                 config.CreateMap<AdministradorCreacionDTO, Users>();
 
                 //productos
-                config.CreateMap<Producto, ProductoCreacionDTO>().ReverseMap();
-                config.CreateMap<ProductoCreacionDTO, Producto>();
+                config.CreateMap<ProductoCreacionDTO, Producto>().ReverseMap();
+                config.CreateMap<Producto, ProductoDTO>();
                 
 
 			});

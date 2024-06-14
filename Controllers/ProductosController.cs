@@ -23,6 +23,23 @@ namespace ApiDonAldo.Controllers
 			var producto = await _sproductos.CrearProductosAsync(productoCreacionDTO);
 			return Ok(producto);
 		}
+		[HttpGet]
+		public async Task<ActionResult<List<ProductoDTO>>> GetProductos()
+		{
+			try
+			{
+				var producto = await _sproductos.GetProductosAsync();
+				return Ok(producto);
+
+			}
+			catch (Exception ex) 
+			{
+
+				return BadRequest(ex.Message);
+
+			}
+		}
+
 
 
 		
