@@ -8,8 +8,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
-
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,20 +46,10 @@ builder.Services.AddCors(options =>
 	});
 });
 
-
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
-
-//Configuración del jwt
-
-
-
-
-
 var app = builder.Build();
-
-
 
 using (var scope = app.Services.CreateScope())
 {
@@ -80,7 +69,6 @@ using (var scope = app.Services.CreateScope())
 	}
 }
 
-
 // Configure the HTTP request pipeline.
 
 if (app.Environment.IsDevelopment())
@@ -91,13 +79,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-//Uso la autenticación.
-
+app.UseStaticFiles(); 
 app.UseCors();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
