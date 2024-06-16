@@ -8,6 +8,8 @@
 		public string Descripcion { get; set; }
 		public decimal Precio { get; set; }
 		public string ImagenUrl { get; set; } // URL de la imagen
+		public string Imagen { get; set; }
+		public string NombreArchivoImagen { get; set; }
 
 	}
 }

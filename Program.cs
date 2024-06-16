@@ -1,14 +1,14 @@
 using ApiDonAldo.Context;
 using ApiDonAldo.Helpers;
 using ApiDonAldo.Models;
-using ApiDonAldo.Models.Entities;
-using ApiDonAldo.Repo;
 using ApiDonAldo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+
+
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,7 +79,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); 
+app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+	FileProvider = new PhysicalFileProvider(@"C:\Users\Mateo\Desktop\test\images"),
+	RequestPath = "/images"
+});
+
 app.UseCors();
 app.UseAuthorization();
 app.MapControllers();

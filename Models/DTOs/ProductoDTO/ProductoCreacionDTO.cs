@@ -7,8 +7,6 @@
 		public string Nombre { get; set; }
 		public string Descripcion { get; set; }
 		public decimal Precio { get; set; }
-		public IFormFile Imagen { get; set; } // Archivo de la imagen
-
-
+		public IFormFile? Imagen { get; set; } 
 	}
 }
