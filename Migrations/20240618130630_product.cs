@@ -4,7 +4,7 @@
 
 namespace ApiDonAldo.Migrations
 {
-    public partial class columnacompletaimg : Migration
+    public partial class product : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

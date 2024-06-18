@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiDonAldo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240615121557_columnacompletaimg")]
-    partial class columnacompletaimg
+    [Migration("20240618130630_product")]
+    partial class product
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
