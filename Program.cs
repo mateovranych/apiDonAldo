@@ -1,14 +1,13 @@
 using ApiDonAldo.Context;
 using ApiDonAldo.Helpers;
 using ApiDonAldo.Models;
-using ApiDonAldo.Models.Entities;
-using ApiDonAldo.Repo;
 using ApiDonAldo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
+
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +32,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<SAdministradores>();
 builder.Services.AddScoped<SClientes>();
 builder.Services.AddScoped<SToken>();
+builder.Services.AddScoped<SProductos>();
 builder.Services.AddScoped<SCuentas>();
 builder.Services.AddScoped<dataSeeder>();
 //Configuración de cors
@@ -46,20 +46,10 @@ builder.Services.AddCors(options =>
 	});
 });
 
-
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
-
-//Configuración del jwt
-
-
-
-
-
 var app = builder.Build();
-
-
 
 using (var scope = app.Services.CreateScope())
 {
@@ -79,7 +69,6 @@ using (var scope = app.Services.CreateScope())
 	}
 }
 
-
 // Configure the HTTP request pipeline.
 
 if (app.Environment.IsDevelopment())
@@ -90,13 +79,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-//Uso la autenticación.
+app.UseStaticFiles(new StaticFileOptions
+{
+	FileProvider = new PhysicalFileProvider(@"C:\Users\Mateo\Desktop\test\images"),
+	RequestPath = "/images"
+});
 
 app.UseCors();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
