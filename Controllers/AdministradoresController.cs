@@ -61,7 +61,8 @@ namespace ApiDonAldo.Controllers
 		[HttpDelete("{id}")]
 		public async Task<ActionResult> DeleteAdminById([FromRoute] string id)
 		{
-			try {
+			try 
+			{
 				await sadministradores.DeleteAdmin(id);
 				return NoContent();
 			}

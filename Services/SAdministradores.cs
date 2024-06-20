@@ -99,10 +99,8 @@ namespace ApiDonAldo.Services
 			}
 		}
 		public async Task<AdministradorDTO> UpdateAdmin(string id, AdministradorCreacionDTO administradorCreacionDTO)
-		{
-			
+		{			
 			try{
-
 				var admin = await context.Users.FirstOrDefaultAsync(x => x.Id == id);
 				if (admin == null)
 					throw new Exception("No existe un administrador con el id especificado");
@@ -123,7 +121,6 @@ namespace ApiDonAldo.Services
 				await context.SaveChangesAsync();
 
 				return mapper.Map<AdministradorDTO>(admin);	
-
 
 			}
 			catch (Exception)

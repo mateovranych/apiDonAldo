@@ -8,6 +8,6 @@ namespace ApiDonAldo.Repo
 		Task<List<ClienteDTO>> GetClientes();
 		Task<ClienteDTO> GetClienteByID(int id);
 		Task<ClienteDTO> CreateUpdate(ClienteDTO clienteDTO);
-		Task<bool> DeleteCliente(int id);
+		Task<bool> DeleteCliente(string id);
 	}
 }

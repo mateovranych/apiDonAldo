@@ -58,8 +58,18 @@ namespace ApiDonAldo.Services
 			return _mapper.Map<List<ProductoDTO>>(productos);
 		}
 
-		
+		public async Task<ProductoDTO> GetProductosByIdAsync(int id)
+		{
+			var producto = await _context.Productos.FindAsync(id);
+			if(producto == null)
+			{
+				throw new Exception("Producto no encontrado");
+			}
 
+			return _mapper.Map<ProductoDTO>(producto);
+
+		}
+		
 		public async Task<bool> BorrarProductoAsync(int id)
 		{
 			var producto = await _context.Productos.FindAsync(id);
@@ -76,6 +86,32 @@ namespace ApiDonAldo.Services
 
 			return true;
 
+		}
+
+		public async Task<ProductoDTO> EditarProductoAsync(int id ,ProductoEdicionDTO productoEdicionDTO)
+		{
+			var producto = await _context.Productos.FindAsync(id);
+
+			if(producto == null)
+			{
+				throw new Exception("Producto no encontrado");
+			}
+
+			producto.Nombre = productoEdicionDTO.Nombre;
+			producto.Descripcion = productoEdicionDTO.Descripcion;
+			producto.Precio = productoEdicionDTO.Precio;
+
+			if(productoEdicionDTO.Imagen != null)
+			{
+				var imagenUrl = await GuardarImagenAsync(productoEdicionDTO.Imagen);
+				producto.ImagenUrl = imagenUrl;
+			}
+
+			_context.Productos.Update(producto);
+			await _context.SaveChangesAsync();
+
+			return _mapper.Map<ProductoDTO>(producto);	
+						
 		}
 		public async Task<string> GuardarImagenAsync(IFormFile imagen)
 		{

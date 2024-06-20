@@ -24,7 +24,11 @@ namespace ApiDonAldo.Helpers
                 //productos
                 config.CreateMap<ProductoCreacionDTO, Producto>().ReverseMap();
                 config.CreateMap<Producto, ProductoDTO>();
+                config.CreateMap<ProductoEdicionDTO, ProductoDTO>().ReverseMap();
+                config.CreateMap<Producto, ProductoEdicionDTO>().ReverseMap();
+                config.CreateMap<ProductoEdicionDTO, Producto>();
                 
+
 
 			});
 
