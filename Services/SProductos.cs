@@ -51,20 +51,32 @@ namespace ApiDonAldo.Services
 
 		public async Task<List<ProductoDTO>> GetProductosAsync()
 		{
-			try
-			{
-				var productos = await _context.Productos.ToListAsync();
+			var productos = await _context.Productos
+									  .Where(p => !p.Eliminado)
+									  .ToListAsync();
 
-				return _mapper.Map<List<ProductoDTO>>(productos);
-
-			}
-			catch (Exception)
-			{
-
-				throw;
-			}
+			return _mapper.Map<List<ProductoDTO>>(productos);
 		}
 
+		
+
+		public async Task<bool> BorrarProductoAsync(int id)
+		{
+			var producto = await _context.Productos.FindAsync(id);
+			if (producto == null || producto.Eliminado)
+			{
+				return false;
+			}
+
+			producto.Eliminado = true;
+			producto.FechaEliminacion = DateTime.Now;
+
+			_context.Productos.Update(producto);
+			await _context.SaveChangesAsync();
+
+			return true;
+
+		}
 		public async Task<string> GuardarImagenAsync(IFormFile imagen)
 		{
 			// Generar un nombre de archivo único

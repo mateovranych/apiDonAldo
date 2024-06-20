@@ -39,9 +39,22 @@ namespace ApiDonAldo.Controllers
 
 			}
 		}
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> EliminarProducto(int id)
+		{
+			var result = await _sproductos.BorrarProductoAsync(id);
+			if (!result)
+			{
+				return NotFound();
+			}
 
-
-
+			return NoContent();
+		}
+		[HttpPut]
+		public async Task<ActionResult> EditarProductosById()
+		{
+			return Ok();
+		}
 		
 	}
 }
