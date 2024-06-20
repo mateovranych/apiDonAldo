@@ -9,20 +9,21 @@ namespace ApiDonAldo.Controllers
 	[ApiController]
 	public class ProductosController : ControllerBase
 	{
-        private readonly SProductos _sproductos;
-        public ProductosController(SProductos sProductos)
-        {
-            _sproductos = sProductos;
-            
-        }
+		private readonly SProductos _sproductos;
+		public ProductosController(SProductos sProductos)
+		{
+			_sproductos = sProductos;
+
+		}
 
 
 		[HttpPost]
-		public async Task<IActionResult> CrearProducto([FromForm]ProductoCreacionDTO productoCreacionDTO)
+		public async Task<IActionResult> CrearProducto([FromForm] ProductoCreacionDTO productoCreacionDTO)
 		{
 			var producto = await _sproductos.CrearProductosAsync(productoCreacionDTO);
 			return Ok(producto);
 		}
+
 		[HttpGet]
 		public async Task<ActionResult<List<ProductoDTO>>> GetProductos()
 		{
@@ -32,13 +33,34 @@ namespace ApiDonAldo.Controllers
 				return Ok(producto);
 
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 
 				return BadRequest(ex.Message);
 
 			}
 		}
+
+		[HttpGet("{id}")]
+		public async Task<ActionResult<ProductoDTO>> GetProductosById(int id)
+		{
+			try{
+				var producto = await _sproductos.GetProductosByIdAsync(id);
+				if(producto == null)
+				{
+					throw new Exception("Error al encontrar el producto");
+				}
+
+				return Ok(producto);
+
+
+
+			}catch (Exception ex)
+			{
+				return BadRequest(new { message = ex.Message });
+			}
+		}
+
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> EliminarProducto(int id)
 		{
@@ -50,11 +72,21 @@ namespace ApiDonAldo.Controllers
 
 			return NoContent();
 		}
-		[HttpPut]
-		public async Task<ActionResult> EditarProductosById()
+
+		[HttpPut("{id}")]
+		public async Task<IActionResult> EditarProductos(int id, [FromForm] ProductoEdicionDTO productoEdicionDTO)
 		{
-			return Ok();
-		}
-		
+			try{
+				var producto = await _sproductos.EditarProductoAsync(id, productoEdicionDTO);
+				return Ok(producto);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest( new { ex.Message } );
+				
+			}
+
+		}				
+
 	}
 }

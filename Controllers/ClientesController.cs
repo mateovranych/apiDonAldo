@@ -1,5 +1,6 @@
 ﻿using ApiDonAldo.Models;
 using ApiDonAldo.Models.DTOs.ClienteDTO;
+using ApiDonAldo.Models.DTOs.ProductoDTO;
 using ApiDonAldo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +29,56 @@ namespace ApiDonAldo.Controllers
             try{
                 var clientes = await sClientes.GetClientesActivosAsync();
                 return Ok(clientes);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult<ClienteDTO>> GetClientesById([FromRoute]string id)
+        {
+            try
+            {
+                var clientes = await sClientes.GetClientesByIdAsync(id);
+                if(clientes == null)
+                {
+                    throw new Exception("No se pudo encontrar el cliente");
+                }
+                return Ok(clientes);
+            }
+            catch(Exception ex)
+            {
+				return BadRequest(new { message = ex.Message });
+			}
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteClients([FromRoute]string id)
+        {
+            try
+            {
+                await sClientes.DeleteClient(id);
+				return NoContent();
+
+			}
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult>EditarClientes(string id, ClienteEdicionDTO clienteEdicionDTO)
+        {
+            try
+            {
+                var cliente = await sClientes.EditClientesAsync(id, clienteEdicionDTO);
+                return Ok(cliente);
+
             }
             catch (Exception)
             {

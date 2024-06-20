@@ -2,37 +2,29 @@
 
 namespace ApiDonAldo.Models.DTOs.ClienteDTO
 {
-    public class ClienteDTO
-    {
-		[Required]
-		public string Id { get; set; }
-
+	public class ClienteEdicionDTO
+	{
 		[Required]
 		public string Nombre { get; set; }
+
 		[Required]
 		public string Apellido { get; set; }
 
 		[Required]
 		public int Dni { get; set; }
 
-		[Required]		
+		[Required]
+		[Phone]
 		public string Telefono { get; set; }
 
 		[Required]
 
 		public string Direccion { get; set; }
 
-
 		[Required]
+		[EmailAddress]
 		public string Email { get; set; }
 
-		[Required]
-		public DateTime FechaCreacion { get; set; }
-
-		[Required]
-		public bool EsAdmin { get; set; }
-
-		[Required]
-		public bool Activo { get; set; }
+		public string? Password { get; set; }
 	}
 }

@@ -6,10 +6,8 @@ namespace ApiDonAldo.Models.Entities
     {
         [Key]
         public int id { get; set; }
-
         [Required]
         public string? nombre { get; set; }
-
 		[Required]
 		public string? apellido { get; set; }
 		[Required]

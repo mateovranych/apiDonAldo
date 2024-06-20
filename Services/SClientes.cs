@@ -1,7 +1,10 @@
 ﻿using ApiDonAldo.Context;
+using ApiDonAldo.Migrations;
 using ApiDonAldo.Models;
 using ApiDonAldo.Models.Auth;
 using ApiDonAldo.Models.DTOs.ClienteDTO;
+using ApiDonAldo.Models.DTOs.ProductoDTO;
+using ApiDonAldo.Models.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -68,23 +71,56 @@ namespace ApiDonAldo.Services
 			}
 		}
 
-		public async Task DeleteClient(string email)
+        public async Task<ClienteDTO> GetClientesByIdAsync(string id)
         {
-            try
-            {
-                var cliente = await _userManager.FindByEmailAsync(email);
-                if (cliente == null || cliente.EsAdmin) throw new Exception();
-
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+           
+                var clientes = await _context.Users.FindAsync(id);
+                if(clientes == null)
+                {
+                    throw new Exception("Cliente no encontrado");
+                }
             
+		
 
+            return mapper.Map<ClienteDTO>(clientes);			
+		}
+        
+        public async Task<ClienteDTO> EditClientesAsync(string id, ClienteEdicionDTO clienteEdicionDTO)
+        {
+			var clientes = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+			if (clientes == null)
+				throw new Exception("No existe un administrador con el id especificado");
+			
+
+            clientes.Nombre = clienteEdicionDTO.Nombre;
+            clientes.Apellido = clienteEdicionDTO.Apellido;
+            clientes.Dni = clienteEdicionDTO.Dni;   
+            clientes.Direccion = clienteEdicionDTO.Direccion;
+            clientes.Telefono = clienteEdicionDTO.Telefono;
+            clientes.Email = clienteEdicionDTO.Email;
+            
+			
+			await _context.SaveChangesAsync();
+
+			return mapper.Map<ClienteDTO>(clientes);
+		}
+
+		public async Task DeleteClient(string id)
+        {
+			try
+			{
+				var cliente = await _context.Users.FirstOrDefaultAsync(x => x.Id == id && x.EsAdmin == false && x.Activo == true);
+				if (cliente == null)
+					throw new Exception("No existe el administrador con el id especificado");
+			
+				_context.Users.Remove(cliente);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			                        
         }
-
     }
 }
