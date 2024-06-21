@@ -45,7 +45,7 @@ namespace ApiDonAldo.Controllers
 				return StatusCode(500, "Error interno del servidor");
 			}
 		}
-		[HttpGet("{id:int}")]
+		[HttpGet("{id}")]
 		public async Task<ActionResult<AdministradorDTO>> GetAdministradoresById([FromRoute] string id)
 		{
 			try
