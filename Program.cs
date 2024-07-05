@@ -14,9 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-
 //Hago una cadena de conexión que va a servir para enlazarse con el appsettings.json.
-string connectionString = builder.Configuration.GetConnectionString("defaultConnetcion");
+string connectionString = builder.Configuration.GetConnectionString("defaultConnection");
 //Hago una variable llamada ServerVersion.
 var ServerVersion = new MySqlServerVersion(new Version(8,0,33));
 //Realizo la conexión.

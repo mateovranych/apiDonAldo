@@ -10,6 +10,7 @@ namespace ApiDonAldo.Models
 
 		[Required]
 		public string Nombre { get; set; }
+
 		[Required]
 		public string Apellido { get; set; }
 
@@ -23,7 +24,6 @@ namespace ApiDonAldo.Models
 
 		[Required]
 		public bool EsAdmin { get; set; }
-
 
 		[Required]
 		[Column(TypeName = "date")]

@@ -28,8 +28,6 @@ namespace ApiDonAldo.Helpers
                 config.CreateMap<Producto, ProductoEdicionDTO>().ReverseMap();
                 config.CreateMap<ProductoEdicionDTO, Producto>();
                 
-
-
 			});
 
             return mappingConfig;
