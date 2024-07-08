@@ -4,8 +4,6 @@ using ApiDonAldo.Models.Auth;
 using ApiDonAldo.Models.DTOs.AdministradorDTO;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Construction;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiDonAldo.Services
