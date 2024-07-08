@@ -13,6 +13,17 @@ namespace ApiDonAldo.Models.DTOs.ClienteDTO
 		public string Apellido { get; set; }
 
 		[Required]
+		public int Dni { get; set; }
+
+		[Required]		
+		public string Telefono { get; set; }
+
+		[Required]
+
+		public string Direccion { get; set; }
+
+
+		[Required]
 		public string Email { get; set; }
 
 		[Required]

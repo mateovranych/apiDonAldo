@@ -66,6 +66,15 @@ namespace ApiDonAldo.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("FechaEliminacion")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Imagen")
                         .IsRequired()
                         .HasColumnType("longtext");
