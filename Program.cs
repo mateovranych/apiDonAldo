@@ -28,9 +28,9 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Inyecto los servicios
+builder.Services.AddScoped<SToken>();
 builder.Services.AddScoped<SAdministradores>();
 builder.Services.AddScoped<SClientes>();
-builder.Services.AddScoped<SToken>();
 builder.Services.AddScoped<SProductos>();
 builder.Services.AddScoped<SCuentas>();
 builder.Services.AddScoped<dataSeeder>();
