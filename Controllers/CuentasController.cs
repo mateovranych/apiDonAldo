@@ -7,20 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiDonAldo.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class CuentasController : ControllerBase
-	{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CuentasController : ControllerBase
+    {
         private readonly SCuentas sCuentas;
         private readonly SToken sToken;
         private readonly SClientes sClientes;
 
         public CuentasController(SCuentas sCuentas, SToken sToken, SClientes sClientes)
-        {      
+        {
             this.sCuentas = sCuentas;
             this.sToken = sToken;
-            this.sClientes = sClientes; 
-        }
+            this.sClientes = sClientes;
+        } 
 
         [HttpPost("login")]
         public async Task<ActionResult<RtaAuth>>Login(Credentials credentials)
@@ -32,9 +32,7 @@ namespace ApiDonAldo.Controllers
             return Ok(generarTokenLogin);
         }
 
-
         [HttpPost("registro")]
-
         public async Task<ActionResult<RtaAuth>> RegistroCliente([FromBody] ClienteCreacionDTO clienteCreacionDTO)
         {
             try
@@ -48,7 +46,6 @@ namespace ApiDonAldo.Controllers
 
                 throw;
             }
-
         }
     }
 }
