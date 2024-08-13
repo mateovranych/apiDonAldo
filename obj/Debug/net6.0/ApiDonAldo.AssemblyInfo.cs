@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiDonAldo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d818abc2f516c75085b5d1e22d807e8409b0990")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiDonAldo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiDonAldo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

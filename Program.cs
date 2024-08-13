@@ -5,15 +5,14 @@ using ApiDonAldo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
-
-
+using MercadoPago.Config;
 using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+MercadoPagoConfig.AccessToken = "TEST-1929079393514220-071121-5425069061a738f7407f88929c88c3c1-206326705";
 //Hago una cadena de conexión que va a servir para enlazarse con el appsettings.json.
 string connectionString = builder.Configuration.GetConnectionString("defaultConnection");
 //Hago una variable llamada ServerVersion.
