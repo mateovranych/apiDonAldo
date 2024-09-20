@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|c:\\users\\mateo\\source\\repos\\apidonaldo\\helpers\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|solutionrelative:helpers\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|c:\\users\\mateo\\source\\repos\\apidonaldo\\models\\entities\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|solutionrelative:models\\entities\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|c:\\users\\mateo\\source\\repos\\apidonaldo\\models\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|solutionrelative:models\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|c:\\users\\mateo\\source\\repos\\apidonaldo\\models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|solutionrelative:models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|c:\\users\\mateo\\source\\repos\\apidonaldo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{701A17D8-B051-424F-AEB6-37A6076BF485}|ApiDonAldo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +46,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dataSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Helpers\\dataSeeder.cs",
+              "RelativeDocumentMoniker": "Helpers\\dataSeeder.cs",
+              "ToolTip": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Helpers\\dataSeeder.cs",
+              "RelativeToolTip": "Helpers\\dataSeeder.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAlwEQAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T23:53:10.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Entities\\Producto.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Producto.cs",
+              "ToolTip": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Entities\\Producto.cs",
+              "RelativeToolTip": "Models\\Entities\\Producto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T17:58:59.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Entities\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Entities\\Cliente.cs",
+              "RelativeToolTip": "Models\\Entities\\Cliente.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T17:58:58.618Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Venta.cs",
+              "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Venta.cs",
+              "RelativeDocumentMoniker": "Models\\Venta.cs",
+              "ToolTip": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Models\\Venta.cs",
+              "RelativeToolTip": "Models\\Venta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T17:57:48.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -46,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -58,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -66,12 +132,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAowBUAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T02:41:53.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T02:41:53.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "WeatherForecast.cs",
               "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\WeatherForecast.cs",
               "RelativeDocumentMoniker": "WeatherForecast.cs",
@@ -83,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Mateo\\source\\repos\\ApiDonAldo\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
